@@ -1,0 +1,23 @@
+{% extends 'base.html.twig' %}
+ {% block title %} Weapons {% endblock %}
+{% block body %}
+    {% block titre %}<h1>Liste des armes</h1>{% endblock %}
+
+    <table class="table" >
+        <tr class="thead-dark">
+            <th>Image</th>
+            <th>Type</th>
+            <th>Dommages</th>
+            <th>Description</th>
+        </tr>
+        {% for weapon in weapons %}
+            <tr>
+                <td><img src="{{ asset('images/armes/' ~ weapon.type|lower ~ '.png') }}"></td>
+                <td><a href="{{ path('detail_weapon', {'type' : weapon.type|lower}) }}" >{{ weapon.type }}</a></td>
+                <td> {{ weapon.dommages }}</td>
+                <td> {{ weapon.description}}</td>
+            </tr>
+        {% endfor %}
+    </table>
+
+{% endblock %}
